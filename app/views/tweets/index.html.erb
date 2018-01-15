@@ -1,0 +1,40 @@
+<nav class="navbar navbar-default">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#gnavi">
+        <span class="sr-only">Bootstrap</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Tweeter</a>
+    </div>
+</nav>
+<article>
+  <div class="container-fruid">
+    <%= notice %>
+    <h1 class= "text-center">ツイート一覧</h1>
+    <div class= "row">
+      <div class= "col-xs-offset-8 col-xs-4">
+        <%= link_to "ツイートを投稿する", new_tweet_path, class: "btn btn-default" %>
+      </div>
+    </div>
+    <div class= "row">
+      <% @tweets.each do |tweet| %>
+　    <div class= "col-xs-offset-3 col-xs-6">
+         <div class="panel panel-default">
+           <div class="panel-heading">
+             <h3 class="panel-title">ツイート</h3>
+           </div>
+           <div class="panel-body">
+             <%= tweet.content %>
+           </div>
+         </div>
+　         <%= link_to "ツイートを編集する", edit_tweet_path(tweet.id), class: "btn btn-primary" %>
+　         <%= link_to "ツイートを削除する", tweet_path(tweet.id), method: :delete, data: { confirm: '本当に削除していいですか？' }, class: "btn btn-primary" %>
+           </br>    
+      </div>
+      <% end %> 
+    </div>
+  </div>
+</article>
+
